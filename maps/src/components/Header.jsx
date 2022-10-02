@@ -11,6 +11,8 @@ function Header() {
         // On fait en class général que ce soit flex pour etre sur que toutes les autres div seront bien 
 
         <div className=" sticky top-0 z-50 flex bg-white px-4 py-2 shadow-sm">
+            <div className=' flex page-content'>
+
             <div className='flex flex-1 justify-start items-center gap-2'>
                 <MagnifyingGlassIcon className="h-15 w-10" />
                 What happened to your bike ?
@@ -21,13 +23,17 @@ function Header() {
             </div>
 
             {/* Si c'est assez grand on affiche toutes les icons */}
+            <div className='flex justify-start items-center gap-2 cursor-pointer'>
+
             <a href="https://github.com/jmimassi/IoT-Project">
-                <div className='flex justify-start items-center gap-2 cursor-pointer'>
+                <div className='flex gap-2'>
                     <GitHubIcon className="h-15 w-10" />
                     Check our project on Github !
                 </div>
 
             </a>
+            </div>
+            </div>
             {/* Si c'est petit on affiche que la petite icon qui permet d'agrandir */}
 
 
