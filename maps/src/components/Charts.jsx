@@ -69,7 +69,7 @@ function Charts() {
     socket.on("numberofbikes", (numberofbikes, temps) =>{
                 console.log(numberofbikes)
 
-                setDatas([...datas,{uv : numberofbikes, name : temps/1000}])
+                setDatas([...datas,{uv : numberofbikes, name : temps}])
                 console.log(datas)
             })
 
