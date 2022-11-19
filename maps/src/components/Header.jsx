@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 // import Image from 'next/Image'
-import { BeakerIcon, ChevronDownIcon, HomeIcon, SearchIcon, SparklesIcon, GlobalIcon, VideoCameraIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
-import { StarIcon } from '@heroicons/react/24/outline'
+import { StarIcon } from '@heroicons/react/24/outline';
+import { BeakerIcon, ChevronDownIcon, GlobalIcon, HomeIcon, MagnifyingGlassIcon, SearchIcon, SparklesIcon, VideoCameraIcon } from '@heroicons/react/24/solid';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 

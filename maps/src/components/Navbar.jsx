@@ -1,33 +1,34 @@
-import * as React from 'react';
-import ListSubheader from '@mui/material/ListSubheader';
+import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
+import BackspaceIcon from '@mui/icons-material/Backspace';
+import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import Collapse from '@mui/material/Collapse';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Collapse from '@mui/material/Collapse';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import SendIcon from '@mui/icons-material/Send';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder';
-import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
-import BackspaceIcon from '@mui/icons-material/Backspace';
-import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import ListSubheader from '@mui/material/ListSubheader';
+import * as React from 'react';
 
 
-const activateLasers = () => {
-    console.log("hello")
-}
 
-export default function NestedList() {
+export default function NestedList({positions ,setPositions, coordone, coordtwo , groupcoord, setCoordone, setCoordtwo, setGroupcoord , datas, setDatas}) {
     const [open, setOpen] = React.useState(true);
-
+    
     const handleClick = () => {
         setOpen(!open);
     };
-
+    
+    const eraseLists = () => {
+        console.log("hello")
+        setPositions([])
+        setCoordone([])
+        setCoordtwo([])
+        setGroupcoord([])
+        setDatas([])
+    }
 
 
     return (
@@ -43,13 +44,13 @@ export default function NestedList() {
                     </ListSubheader>
                 }
             >
-                <ListItemButton onClick={activateLasers}>
+                <ListItemButton>
                     <ListItemIcon>
                         <DirectionsBikeIcon o />
                     </ListItemIcon>
                     <ListItemText primary="Find bikes" />
                 </ListItemButton>
-                <ListItemButton>
+                <ListItemButton onClick={eraseLists}>
                     <ListItemIcon>
                         <BackspaceIcon />
                     </ListItemIcon>
@@ -64,7 +65,7 @@ export default function NestedList() {
                 </ListItemButton>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4 }} onClick={activateLasers}>
+                        <ListItemButton sx={{ pl: 4 }} >
                             <ListItemIcon>
                                 <FilterAltIcon />
                             </ListItemIcon>

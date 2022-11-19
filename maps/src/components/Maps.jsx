@@ -1,20 +1,23 @@
-import React, {useState} from 'react'
-import { MapContainer, TileLayer, useMap, Marker, Popup, Circle } from 'react-leaflet'
-import io from 'socket.io-client'
+import React, { useEffect } from 'react';
+import { Circle, MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import io from 'socket.io-client';
 
-const socket = io.connect("http://localhost:3001");
 const redOptions = { color: 'red' }
+const socket = io.connect("http://localhost:3001");
 
 
 
-function Maps() {
+function Maps({positions, setPositions}) {
 
-    const [positions, setPositions] = useState([])
 
-    socket.on("coordonnee", (coord1, coord2) =>{
-        setPositions([...positions, {x: coord1, y: coord2}])
-        console.log(positions)
-    })
+    useEffect(() => {
+        socket.on("coordonnee", (coord1, coord2) => {
+            setPositions([...positions, { x: coord1, y: coord2 }])
+            console.log(positions)
+        })
+    }, [socket, positions])
+
+
 
     return (
         <div>
@@ -29,7 +32,7 @@ function Maps() {
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
-                            {positions.map((item)=>{
+                            {positions.map((item) => {
                                 return (
                                     <div key={item.id}>
                                         <Marker position={[item.x, item.y]}>
@@ -37,11 +40,11 @@ function Maps() {
                                                 ECAM Brussels Engineering <br /> Position of the gateway.
                                             </Popup>
                                         </Marker>
-                                        </div>
+                                    </div>
                                 )
-                                })}
-                            
-                            <Circle center={[50.8500366, 4.45399844]} pathOptions={redOptions} radius={1000} />
+                            })}
+
+                            <Circle center={[50.8500366, 4.45399844]} pathOptions={redOptions} radius={1400} />
                         </MapContainer>
                     </div>
                 </div>
