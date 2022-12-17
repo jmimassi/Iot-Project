@@ -1,30 +1,35 @@
-import React, { useEffect } from 'react';
-import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import io from 'socket.io-client';
+import React, { useEffect } from "react";
+import {
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import io from "socket.io-client";
 const socket = io("http://localhost:3001/");
 
-function Charts({datas, setDatas}) {
-
-
-
+function Charts({ datas, setDatas }) {
   useEffect(() => {
-
     socket.on("numberofbikes", (numberofbikes, temps) => {
-      console.log(numberofbikes)
+      console.log(numberofbikes);
 
-      setDatas([...datas, { "Number of bike that fell": numberofbikes, name: temps }])
-      console.log(datas)
+      setDatas([
+        ...datas,
+        { "Number of bike that fell": numberofbikes, name: temps },
+      ]);
+      console.log(datas);
     });
-  }, [socket, datas]);
+  }, [socket, datas, setDatas]);
 
   return (
     <div>
-      <div className='flex flex-col justify-center items-start'>
-
-        <div className='border border-5 rounded-3xl overflow-hidden'>
-
-
-          <div className='charts'>
+      <div className="flex flex-col justify-center items-start">
+        <div className="border border-5 rounded-3xl overflow-hidden">
+          <div className="charts">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 data={datas}
@@ -40,16 +45,19 @@ function Charts({datas, setDatas}) {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="Number of bike that fell" stroke="#8884d8" activeDot={{ r: 8 }} />
+                <Line
+                  type="monotone"
+                  dataKey="Number of bike that fell"
+                  stroke="#8884d8"
+                  activeDot={{ r: 8 }}
+                />
               </LineChart>
             </ResponsiveContainer>
           </div>
-
         </div>
-
       </div>
     </div>
-  )
+  );
 }
 
 export default Charts;

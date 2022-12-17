@@ -1,28 +1,38 @@
 # How to setup this project
 
-## Once this repo cloned on your computer, run these commands :
+1. Be sure to have **Docker** installed on your machine and install mongodb for a persistent storage. <br/>
+   In the **IoT-Project** folder:
+
+```
+docker-compose up
+```
+
+2.  Install MongoDB Compass, connect port 27017 and to the create a database : **Tracker** and a collection : **Tracker** too.
+    ![alt text](./MongoConnect.png)
+    ![alt text](./MongoAtlas.png)
+
+## Run these commands for the frontend and the backend :
 
 <br />
 
-1. Be sure to be in the **maps** folder.
+3. Be sure to be in the **maps** folder.
 
 <br />
 
 ```
-Run npm i 
+npm i
 
-Run npm start
+npm start
 ```
 
 <br />
 
-2. Go back in the **backend** folder
-   
+4. Go back in the **backend** folder.
+
 <br />
 
 ```
-Run npm i 
+npm i
 
-Run npm start
+npm start
 ```
-
