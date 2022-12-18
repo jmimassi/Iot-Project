@@ -87,7 +87,7 @@ io.on("connection", (socket) => {
 
     _numberofbikes = _numberofbikes + 1;
 
-    numberofbikes = Math.ceil(_numberofbikes / 6);
+    numberofbikes = Math.ceil(_numberofbikes / 1);
     console.log(numberofbikes);
     console.log("numberofbikes sent" + numberofbikes);
     socket.emit("numberofbikes", numberofbikes, time);
