@@ -27,13 +27,17 @@ function Maps({ positions, setPositions, socket }) {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
+              <Marker position={[50.8500366, 4.45399844]}>
+                <Popup>
+                  ECAM Brussels Engineering <br /> Position of the gateway.
+                </Popup>
+              </Marker>
               {positions.map((item) => {
                 return (
                   <div key={item.id}>
                     <Marker position={[item.x, item.y]}>
                       <Popup>
-                        ECAM Brussels Engineering <br /> Position of the
-                        gateway.
+                        The bike has fallen at x : {item.x} y : {item.y}
                       </Popup>
                     </Marker>
                   </div>
