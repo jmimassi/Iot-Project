@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:3001");
+// const socket = io.connect("http://localhost:3001");
 
 const redOptions = { color: "red" };
 
@@ -12,6 +11,7 @@ function Terminal({
   setCoordone,
   setCoordtwo,
   setGroupcoord,
+  socket,
 }) {
   const bottomRef = useRef(null);
 
@@ -36,7 +36,7 @@ function Terminal({
       setGroupcoord([...groupcoord, coord]);
       console.log(coordone, coordtwo, groupcoord);
     });
-  }, [socket, coordone, coordtwo, groupcoord]);
+  }, [coordone, coordtwo, groupcoord]);
 
   // 👇️ scroll to bottom every time messages change
   bottomRef.current?.scrollIntoView({ behavior: "smooth" });

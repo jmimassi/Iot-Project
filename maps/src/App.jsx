@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+
 import "./App.css";
 import Charts from "./components/Charts";
 import Header from "./components/Header";
 import Maps from "./components/Maps";
 import Navbar from "./components/Navbar";
 import Terminal from "./components/Terminal";
+
 // import io from 'socket.io-client'
 // const socket = io("http://localhost:3001/");
 
-function App() {
+function App({ socket }) {
   const [groupcoord, setGroupcoord] = useState([]);
   const [coordone, setCoordone] = useState();
   const [coordtwo, setCoordtwo] = useState();
@@ -34,13 +36,18 @@ function App() {
             setGroupcoord={setGroupcoord}
             datas={datas}
             setDatas={setDatas}
+            socket={socket}
           />
         </div>
 
         <div className="flex flex-col gap-3 items-start w-full">
           <div className="flex gap-4">
             <div>
-              <Maps positions={positions} setPositions={setPositions} />
+              <Maps
+                positions={positions}
+                setPositions={setPositions}
+                socket={socket}
+              />
             </div>
             <div className="h-min-screen">
               <Terminal
@@ -50,11 +57,12 @@ function App() {
                 setCoordone={setCoordone}
                 setCoordtwo={setCoordtwo}
                 setGroupcoord={setGroupcoord}
+                socket={socket}
               />
             </div>
           </div>
           <div className="charts">
-            <Charts datas={datas} setDatas={setDatas} />
+            <Charts datas={datas} setDatas={setDatas} socket={socket} />
           </div>
         </div>
       </div>

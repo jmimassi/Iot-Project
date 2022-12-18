@@ -9,10 +9,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import io from "socket.io-client";
-const socket = io("http://localhost:3001/");
 
-function Charts({ datas, setDatas }) {
+function Charts({ datas, setDatas, socket }) {
   useEffect(() => {
     socket.on("numberofbikes", (numberofbikes, temps) => {
       console.log(numberofbikes);
@@ -23,7 +21,7 @@ function Charts({ datas, setDatas }) {
       ]);
       console.log(datas);
     });
-  }, [socket, datas, setDatas]);
+  }, [datas, setDatas]);
 
   return (
     <div>

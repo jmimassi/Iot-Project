@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import { Circle, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 
 const redOptions = { color: "red" };
-const socket = io.connect("http://localhost:3001");
+// const socket = io.connect("http://localhost:3001");
 
-function Maps({ positions, setPositions }) {
+function Maps({ positions, setPositions, socket }) {
   useEffect(() => {
     socket.on("coordonnee", (coord1, coord2) => {
       setPositions([...positions, { x: coord1, y: coord2 }]);
       console.log(positions);
     });
-  }, [socket, positions, setPositions]);
+  }, [positions, setPositions]);
 
   return (
     <div>
